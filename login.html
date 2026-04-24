@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotiPort-Log in</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+<body>
+    <header>
+  <a href="./indexuz.html" class="logo">
+    <img src="./assets/img/Group 2.png" alt="NotiPort" class="logo-text"/>
+  </a>
+  <nav id="main-nav">
+    <a href="./indexuz.html#home">Bosh sahifa</a>
+    <a href="./indexuz.html#about">Haqimizda</a>
+    <a href="./indexuz.html#faqs">FAQs</a>
+    <a href="./indexuz.html#contact">Aloqa</a>
+    <a href="./login.html" class="nav-cta">Ro'yxatdan o'tish</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menyu">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+<section id="register">
+  <p class="section-label">Boshlash</p>
+  <h2 class="section-title">Ro'yxatdan o'ting yoki Kiring</h2>
+  <p class="section-sub">Bepul hisob yarating yoki tizimga kiring va NotiPortAPK-ni yuklab oling.</p>
+  <div class="auth-grid">
+
+    <!-- RO'YXATDAN O'TISH KARTASI -->
+    <div class="auth-card" id="auth-card">
+      <h2>Ro'yxatdan o'tish</h2>
+      <p class="auth-helper">APK yuklab olish uchun hisob yarating</p>
+      <div class="auth-form" id="register-form">
+        <input type="text" id="reg-name" placeholder="To'liq ismingiz" autocomplete="name"/>
+        <input type="email" id="reg-email" placeholder="Email manzilingiz" autocomplete="email"/>
+        <input type="password" id="reg-pass" placeholder="Parol (kamida 6 ta belgi)" autocomplete="new-password"/>
+        <div class="auth-divider">Barcha maydonlar to'ldirilishi shart</div>
+        <button class="auth-btn" onclick="handleRegister()">Hisob yaratish</button>
+        <div class="auth-divider">Allaqachon Hisob bormi?</div>
+      <a class="auth-btn" id="login-btn" href="./login copy.html" onclick="handleLogin1()">Tizimga kirish</a>
+        <div id="reg-msg" style="font-size:0.85rem;text-align:center;min-height:18px;"></div>
+      </div>
+    
+    </div>  
+    <!-- <div class="auth-card" id ="login-card">
+      <h2>Login</h2>
+      <p class="auth-helper">Allaqachon hisobingiz bormi? Shu yerda kiring</p>
+      <div class="auth-form" id="login-form">
+        <input type="email" id="log-email" placeholder="Email Address" autocomplete="email"/>
+        <input type="password" id="log-pass" placeholder="Password" autocomplete="current-password"/>
+        <div class="auth-divider">Ro'yxatdan o'tgan hisobingiz bilan kiring</div>
+        <button class="auth-btn" onclick="handleLogin2()">Kirish</button>
+        <div id="log-msg" style="font-size:0.85rem;text-align:center;min-height:18px;"></div>
+      </div>
+    </div>
+  </div> -->
+  <!-- Yuklab olish bo'limi (autentifikatsiyadan keyin ko'rsatiladi) -->
+  <div class="download-section" id="download-section">
+    <div style="background:white;border-radius:var(--radius);padding:2rem;max-width:480px;margin:0 auto;box-shadow:var(--shadow);border:1.5px solid rgba(0,172,189,0.3);">
+      <div style="font-size:2rem;margin-bottom:0.5rem;">🎉</div>
+      <h3 style="color:var(--secondary);font-size:1.3rem;margin-bottom:0.4rem;" id="welcome-msg">Xush kelibsiz!</h3>
+      <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:1.5rem;">NotiPort APK yuklab olishga tayyor. Boshlash uchun quyidagi tugmani bosing.</p>
+      <a href="./assets/download/app-release (2).apk" class="download-btn" download>
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Yuklab olish
+      </a>
+      <p style="font-size:0.78rem;color:#aaa;margin-top:1rem;">v2.4.1 • Android 7.0+ • ~18 MB</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PASTKI PANEL (FOOTER) ===== -->
+<footer>
+  <div class="footer-logo">
+      <a href="./indexuz.html" class="footer-logo1">
+        <img src="./assets/img/Group 2.png" alt="NotiPort" class="logo-text"/>
+      </a>
+  </div>
+  <p>&copy; 2025 NotiPort. Barcha huquqlar himoyalangan. O'qituvchilar uchun ❤️ bilan yaratilgan.</p>
+</footer>
+<script src="./assets/js/index.js"></script>
+</body>
+</html>

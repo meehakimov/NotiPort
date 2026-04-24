@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TeachFlow — Smart Schedule for Teachers</title>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+    </div>
+    TeachFlow
+  </div>
+  <nav id="main-nav">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#faqs">FAQs</a>
+    <a href="#contact">Contact</a>
+    <a href="#register" class="nav-cta">Register</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="home">
+  <div class="hero-content">
+    <div class="hero-badge">📱 Mobile App for Educators</div>
+    <h1 class="hero-title">
+      Teach Smarter.<br/>
+      Never Miss a <span>Lesson</span>.
+    </h1>
+    <p class="hero-desc">
+      TeachFlow helps teachers manage their daily schedule effortlessly — with smart notifications before every lesson, so you're always prepared and on time.
+    </p>
+    <div class="hero-btns">
+      <a href="#register" class="btn-primary">Register &amp; Download</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>12,000+</strong><span>Active Teachers</span></div>
+      <div class="hero-stat"><strong>98%</strong><span>Satisfaction Rate</span></div>
+      <div class="hero-stat"><strong>4.9★</strong><span>App Rating</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <p class="section-label">About TeachFlow</p>
+  <h2 class="section-title">Built for the Modern Teacher</h2>
+  <p class="section-sub">Everything you need to stay organized, focused, and in control of your classroom schedule.</p>
+  <div class="about-cards">
+    <div class="about-card">
+      <div class="about-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      </div>
+      <h3>12K+</h3>
+      <p>Teachers actively using TeachFlow across schools and universities worldwide.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      </div>
+      <h3>Purpose</h3>
+      <p>Simplify schedule management and deliver timely notifications before every lesson starts.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+      </div>
+      <h3>Advantages</h3>
+      <p>Offline-first, zero-setup, battery-efficient — crafted for real classroom environments.</p>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <h3 class="testimonials-title">What Teachers Say</h3>
+  <div class="testimonials-track">
+    <div class="testimonial-card">
+      <div class="t-header">
+        <div class="t-avatar">SA</div>
+        <div><div class="t-name">Sarah Anderson</div><div class="t-role">High School Teacher</div></div>
+      </div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"TeachFlow completely changed how I manage my day. I never miss a class anymore!"</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-header">
+        <div class="t-avatar">MK</div>
+        <div><div class="t-name">Michael Kim</div><div class="t-role">University Lecturer</div></div>
+      </div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"The smart notifications are a game-changer. I always arrive prepared and on time."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-header">
+        <div class="t-avatar">LP</div>
+        <div><div class="t-name">Laura Patel</div><div class="t-role">Middle School Teacher</div></div>
+      </div>
+      <div class="t-stars">★★★★☆</div>
+      <p class="t-text">"Simple, clean, and it just works. I recommended it to my entire department."</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-header">
+        <div class="t-avatar">JR</div>
+        <div><div class="t-name">James Rivera</div><div class="t-role">Elementary Teacher</div></div>
+      </div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"Setup took under 2 minutes. The UI is beautiful and intuitive. Absolutely love it!"</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-header">
+        <div class="t-avatar">NO</div>
+        <div><div class="t-name">Nina Okonkwo</div><div class="t-role">Science Teacher</div></div>
+      </div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">"Finally an app that understands teachers' needs. Notifications are perfectly timed."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faqs">
+  <p class="section-label">Frequently Asked</p>
+  <h2 class="section-title">Got Questions?</h2>
+  <p class="section-sub">Everything you need to know about TeachFlow before getting started.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I download the TeachFlow APK?
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Register or log in on this page, and a download button will appear immediately. Tap it to download the APK directly to your Android device.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is TeachFlow free to use?
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes! TeachFlow is completely free for all registered teachers. Simply create your account and download the APK at no cost.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Which Android version is required?
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">TeachFlow requires Android 7.0 (Nougat) or higher. It works on virtually all modern Android smartphones and tablets.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do the lesson notifications work?
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">You set your weekly schedule once in the app. TeachFlow then sends you a smart notification 10 minutes before each lesson — fully customizable and works offline.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is my data safe and private?
+        <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M19 13H13v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Absolutely. All schedule data is stored locally on your device. We never share your personal information with third parties. Your privacy is our priority.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact Us</h2>
+  <p class="section-sub">Have a question or feedback? Reach out — we'd love to hear from you.</p>
+  <div class="contact-grid">
+    <div class="contact-form-wrap">
+      <div class="contact-notice">
+        ℹ️ Only registered users can submit feedback. Please register or log in first.
+      </div>
+      <div class="form-group">
+        <label for="c-name">Full Name</label>
+        <input type="text" id="c-name" placeholder="e.g. Sarah Anderson"/>
+      </div>
+      <div class="form-group">
+        <label for="c-msg">Message</label>
+        <textarea id="c-msg" placeholder="Write your feedback or question here..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="submitContact()" style="width:100%;padding:13px;border:none;cursor:pointer;font-size:1rem;">
+        Send Message
+      </button>
+      <div id="contact-success" style="display:none;color:var(--primary);font-size:0.9rem;font-weight:600;text-align:center;margin-top:0.5rem;">
+        ✅ Your message has been sent! We'll reply within 24 hours.
+      </div>
+    </div>
+    <div class="contact-socials">
+      <h3>Find Us On Social Media</h3>
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <div class="social-icon si-insta">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          Instagram — @teachflow
+        </a>
+        <a href="#" class="social-link">
+          <div class="social-icon si-tg">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.286c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.935z"/></svg>
+          </div>
+          Telegram — @teachflow_app
+        </a>
+        <a href="#" class="social-link">
+          <div class="social-icon si-fb">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          Facebook — TeachFlow
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUTH / REGISTER ===== -->
+<section id="register">
+  <p class="section-label">Get Started</p>
+  <h2 class="section-title">Register or Login</h2>
+  <p class="section-sub">Create a free account or sign in to access and download the TeachFlow APK.</p>
+  <div class="auth-grid">
+
+    <!-- REGISTER CARD -->
+    <div class="auth-card">
+      <h2>Register</h2>
+      <p class="auth-helper">Create your account to download the APK</p>
+      <div class="auth-form" id="register-form">
+        <input type="text" id="reg-name" placeholder="Full Name" autocomplete="name"/>
+        <input type="email" id="reg-email" placeholder="Email Address" autocomplete="email"/>
+        <input type="password" id="reg-pass" placeholder="Password (min. 6 chars)" autocomplete="new-password"/>
+        <div class="auth-divider">All fields are required</div>
+        <button class="auth-btn" onclick="handleRegister()">Create Account</button>
+        <div id="reg-msg" style="font-size:0.85rem;text-align:center;min-height:18px;"></div>
+      </div>
+    </div>
+
+    <!-- LOGIN CARD -->
+    <div class="auth-card">
+      <h2>Login</h2>
+      <p class="auth-helper">Already have an account? Sign in below</p>
+      <div class="auth-form" id="login-form">
+        <input type="email" id="log-email" placeholder="Email Address" autocomplete="email"/>
+        <input type="password" id="log-pass" placeholder="Password" autocomplete="current-password"/>
+        <div class="auth-divider">Use your registered credentials</div>
+        <button class="auth-btn" onclick="handleLogin()">Login</button>
+        <div id="log-msg" style="font-size:0.85rem;text-align:center;min-height:18px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download Section (shown after auth) -->
+  <div class="download-section" id="download-section">
+    <div style="background:white;border-radius:var(--radius);padding:2rem;max-width:480px;margin:0 auto;box-shadow:var(--shadow);border:1.5px solid rgba(0,172,189,0.3);">
+      <div style="font-size:2rem;margin-bottom:0.5rem;">🎉</div>
+      <h3 style="color:var(--secondary);font-size:1.3rem;margin-bottom:0.4rem;" id="welcome-msg">Welcome back!</h3>
+      <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:1.5rem;">Your TeachFlow APK is ready to download. Tap below to get started.</p>
+      <a href="#" class="download-btn">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download TeachFlow APK
+      </a>
+      <p style="font-size:0.78rem;color:#aaa;margin-top:1rem;">v2.4.1 • Android 7.0+ • ~18 MB</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+    </div>
+    TeachFlow
+  </div>
+  <p>&copy; 2025 TeachFlow. All rights reserved. Made with ❤️ for educators.</p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* --- NAV TOGGLE --- */
+  function toggleNav() {
+    document.getElementById('main-nav').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('main-nav');
+    const hb = document.getElementById('hamburger');
+    if (!nav.contains(e.target) && !hb.contains(e.target)) nav.classList.remove('open');
+  });
+
+  /* --- FAQ ACCORDION --- */
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  /* --- SIMPLE IN-MEMORY AUTH STORE --- */
+  const users = {};
+  let currentUser = null;
+
+  function showDownload(name) {
+    currentUser = name;
+    const ds = document.getElementById('download-section');
+    ds.classList.add('visible');
+    document.getElementById('welcome-msg').textContent = 'Welcome, ' + name + '! 🎓';
+    ds.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function setMsg(id, text, success) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.style.color = success ? 'var(--primary)' : '#e74c3c';
+  }
+
+  function handleRegister() {
+    const name = document.getElementById('reg-name').value.trim();
+    const email = document.getElementById('reg-email').value.trim().toLowerCase();
+    const pass = document.getElementById('reg-pass').value;
+    if (!name) return setMsg('reg-msg', '⚠️ Please enter your full name.', false);
+    if (!email || !email.includes('@')) return setMsg('reg-msg', '⚠️ Enter a valid email.', false);
+    if (pass.length < 6) return setMsg('reg-msg', '⚠️ Password must be at least 6 characters.', false);
+    if (users[email]) return setMsg('reg-msg', '⚠️ This email is already registered.', false);
+    users[email] = { name, pass };
+    setMsg('reg-msg', '✅ Account created successfully!', true);
+    setTimeout(() => showDownload(name), 600);
+  }
+
+  function handleLogin() {
+    const email = document.getElementById('log-email').value.trim().toLowerCase();
+    const pass = document.getElementById('log-pass').value;
+    if (!email || !pass) return setMsg('log-msg', '⚠️ Please fill in all fields.', false);
+    const user = users[email];
+    if (!user) return setMsg('log-msg', '⚠️ No account found with that email.', false);
+    if (user.pass !== pass) return setMsg('log-msg', '⚠️ Incorrect password.', false);
+    setMsg('log-msg', '✅ Logged in!', true);
+    setTimeout(() => showDownload(user.name), 600);
+  }
+
+  function submitContact() {
+    const name = document.getElementById('c-name').value.trim();
+    const msg = document.getElementById('c-msg').value.trim();
+    if (!name || !msg) { alert('Please fill in all fields.'); return; }
+    document.getElementById('contact-success').style.display = 'block';
+    document.getElementById('c-name').value = '';
+    document.getElementById('c-msg').value = '';
+  }
+</script>
+</body>
+</html>
