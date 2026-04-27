@@ -310,6 +310,20 @@
   }
   .auth-btn:hover { background: var(--secondary); transform: translateY(-2px); box-shadow: 0 6px 22px rgba(18,70,130,0.25); }
   .auth-divider { text-align: center; font-size: 0.82rem; color: #bbb; margin: 10px 0; }
+/* Social Login Buttons */
+  .social-login { display: flex; flex-direction: column; gap: 0.8rem; margin: 0.5rem 0; }
+  .social-btn {
+    width: 100%; padding: 12px 16px; border: none; cursor: pointer;
+    border-radius: 9px; font-size: 0.95rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .social-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+  .google-btn { background: white; color: #333; border: 1.5px solid #ddd; }
+  .google-btn:hover { border-color: #ccc; }
+  .apple-btn { background: #000; color: white; }
+  .apple-btn:hover { background: #222; }
 
   /* Download button (hidden by default) */
   .download-section { display: none; text-align: center; margin-top: 2rem; }

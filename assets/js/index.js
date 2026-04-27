@@ -1,3 +1,22 @@
+  // Import Firebase SDKs
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, OAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyB0i2FgRO4hCNmC5Ehnm02VlTSvfVCpQhY",
+  authDomain: "notiport-f975a.firebaseapp.com",
+  databaseURL: "https://notiport-f975a-default-rtdb.firebaseio.com",
+  projectId: "notiport-f975a",
+  storageBucket: "notiport-f975a.firebasestorage.app",
+  messagingSenderId: "54239992603",
+  appId: "1:54239992603:web:d0a917d666f39c96d251be",
+  measurementId: "G-KQBGQMX8FN"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 /* --- NAVIGATSIYA TUGMASI --- */
   function toggleNav() {
     document.getElementById('main-nav').classList.toggle('open');
@@ -95,3 +114,161 @@ hamburger.addEventListener('click', () => {
     isOpen = false;
   }
 });
+/* --- FIREBASE AUTHENTICATION --- */
+
+// Auth state listener
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    const name = user.displayName || 'Foydalanuvchi';
+    showDownload(name);
+  }
+});
+
+// Helper function for button loading state
+function setButtonLoading(btnId, loading) {
+  const btn = document.querySelector(btnId);
+  if (btn) {
+    btn.disabled = loading;
+    btn.style.opacity = loading ? '0.6' : '1';
+    btn.style.cursor = loading ? 'not-allowed' : 'pointer';
+  }
+}
+// Google Login
+function handleGoogleLogin() {
+  setButtonLoading('.google-btn', true);
+  setMsg('reg-msg', '⏳ Google bilan kirishmoqda...', true);
+  
+  const provider = new GoogleAuthProvider();
+  provider.addScope('email');
+  
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      const name = user.displayName || 'Foydalanuvchi';
+      showDownload(name);
+      setMsg('reg-msg', '✅ Google bilan tizimga kirildi!', true);
+    })
+    .catch((error) => {
+      console.error('Google login error:', error);
+      let errorMsg = '⚠️ Google bilan kirishda xatolik yuz berdi.';
+      
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMsg = '⚠️ Kirish bekor qilindi.';
+      } else if (error.code === 'auth/cancelled-popup-request') {
+        errorMsg = '⚠️ So\'rov bekor qilindi.';
+      } else if (error.code === 'auth/account-exists-with-different-credential') {
+        errorMsg = '⚠️ Bu email boshqa usul bilan ro\'yxatdan o\'tgan.';
+      }
+      
+      setMsg('reg-msg', errorMsg, false);
+    })
+    .finally(() => {
+      setButtonLoading('.google-btn', false);
+    });
+}
+function handleAppleLogin() {
+  setButtonLoading('.apple-btn', true);
+  setMsg('reg-msg', '⏳ Apple bilan kirishmoqda...', true);
+  
+  const provider = new OAuthProvider('apple.com');
+  provider.addScope('email');
+  provider.addScope('name');
+  
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      const name = user.displayName || 'Foydalanuvchi';
+      showDownload(name);
+      setMsg('reg-msg', '✅ Apple bilan tizimga kirildi!', true);
+    })
+    .catch((error) => {
+      console.error('Apple login error:', error);
+      let errorMsg = '⚠️ Apple bilan kirishda xatolik yuz berdi.';
+      
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMsg = '⚠️ Kirish bekor qilindi.';
+      } else if (error.code === 'auth/cancelled-popup-request') {
+        errorMsg = '⚠️ So\'rov bekor qilindi.';
+      } else if (error.code === 'auth/account-exists-with-different-credential') {
+        errorMsg = '⚠️ Bu email boshqa usul bilan ro\'yxatdan o\'tgan.';
+      }
+      
+      setMsg('reg-msg', errorMsg, false);
+    })
+    .finally(() => {
+      setButtonLoading('.apple-btn', false);
+    });
+}
+
+// Logout function
+function handleLogout() {
+  signOut(auth)
+    .then(() => {
+      const ds = document.getElementById('download-section');
+      ds.classList.remove('visible');
+      
+      const authCard = document.getElementById('auth-card');
+      if (authCard) {
+        authCard.style.display = 'block';
+      }
+      
+      setMsg('reg-msg', '', true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch((error) => {
+      console.error('Logout error:', error);
+      alert('Tizimdan chiqishda xatolik yuz berdi.');
+    });
+}
+
+// Professional APK download with progress
+function handleDownload() {
+  const downloadBtn = document.getElementById('download-btn');
+  const downloadText = document.getElementById('download-text');
+  const downloadProgress = document.getElementById('download-progress');
+  const progressBar = document.getElementById('progress-bar');
+  const progressPercent = document.getElementById('progress-percent');
+  const progressText = document.getElementById('progress-text');
+  
+  downloadBtn.disabled = true;
+  downloadBtn.style.opacity = '0.7';
+  downloadText.textContent = 'Yuklanmoqda...';
+  downloadProgress.style.display = 'block';
+  
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.random() * 15;
+    if (progress > 95) progress = 95;
+    
+    progressBar.style.width = progress + '%';
+    progressPercent.textContent = Math.round(progress) + '%';
+    
+    if (progress >= 95) {
+      clearInterval(interval);
+      
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = './assets/download/app-release.apk';
+        link.download = 'NotiPort.apk';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        progressBar.style.width = '100%';
+        progressPercent.textContent = '100%';
+        progressText.textContent = 'Yuklab olindi!';
+        downloadText.textContent = 'Yuklab olindi ✓';
+        
+        setTimeout(() => {
+          downloadBtn.disabled = false;
+          downloadBtn.style.opacity = '1';
+          downloadText.textContent = 'Yuklab olish';
+          downloadProgress.style.display = 'none';
+          progressBar.style.width = '0%';
+          progressPercent.textContent = '0%';
+          progressText.textContent = 'Yuklanmoqda...';
+        }, 3000);
+      }, 500);
+    }
+  }, 200);
+}
