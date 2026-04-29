@@ -7,13 +7,11 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  createUserWithEmailAndPassword,   // FIX: was missing
-  signInWithEmailAndPassword,       // FIX: was missing
-  updateProfile                     // FIX: was missing (needed to save display name on register)
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-// ⚠️ REPLACE these values with your real Firebase project config
-// Go to: Firebase Console → Project Settings → Your Apps → SDK setup
 const firebaseConfig = {
   apiKey: "AIzaSyB0i2FgRO4hCNmC5Ehnm02VlTSvfVCpQhY",
   authDomain: "notiport-f975a.firebaseapp.com",
@@ -29,75 +27,72 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // ================= AUTH STATE =================
-// FIX: Wrapped in DOMContentLoaded so DOM elements are guaranteed to exist
 document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       showDownload(user.displayName || user.email?.split("@")[0] || "User");
     } else {
-      // User logged out — hide download section
-      document.getElementById("download-section")?.classList.remove("visible");
+      hideDownload();
     }
   });
 });
 
 // ================= REGISTER =================
-// FIX: Now actually creates a Firebase user with email + password
 window.handleRegister = async function () {
   const name  = document.getElementById("reg-name")?.value.trim();
   const email = document.getElementById("reg-email")?.value.trim();
   const pass  = document.getElementById("reg-pass")?.value.trim();
 
   if (!name || !email || !pass) {
-    alert("Fill all fields!");
+    showError("reg-error", "Barcha maydonlarni to'ldiring!");
     return;
   }
 
   try {
+    setLoading("btn-register", true);
     const result = await createUserWithEmailAndPassword(auth, email, pass);
-
-    // FIX: Save display name to the Firebase user profile
     await updateProfile(result.user, { displayName: name });
-
-    showDownload(name);
+    showDownload(name); // ✅ hides form, shows download
   } catch (err) {
     console.error(err);
-    alert(getErrorMessage(err.code));
+    showError("reg-error", getErrorMessage(err.code));
+  } finally {
+    setLoading("btn-register", false);
   }
 };
 
 // ================= LOGIN =================
-// FIX: Now actually signs in via Firebase instead of just showing download
 window.handleLogin1 = async function () {
   const email = document.getElementById("log-email")?.value.trim();
   const pass  = document.getElementById("log-pass")?.value.trim();
 
   if (!email || !pass) {
-    alert("Fill login fields!");
+    showError("log-error", "Email va parolni kiriting!");
     return;
   }
 
   try {
+    setLoading("btn-login", true);
     const result = await signInWithEmailAndPassword(auth, email, pass);
     showDownload(result.user.displayName || email.split("@")[0]);
   } catch (err) {
     console.error(err);
-    alert(getErrorMessage(err.code));
+    showError("log-error", getErrorMessage(err.code));
+  } finally {
+    setLoading("btn-login", false);
   }
 };
 
 // ================= GOOGLE LOGIN =================
 window.handleGoogleLogin = async function () {
   const provider = new GoogleAuthProvider();
-
   try {
     const result = await signInWithPopup(auth, provider);
     showDownload(result.user.displayName || "User");
   } catch (err) {
     console.error(err);
-    // FIX: Don't alert on user-cancelled popup (popup-closed-by-user)
     if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
-      alert("Google login error: " + getErrorMessage(err.code));
+      showError("reg-error", getErrorMessage(err.code));
     }
   }
 };
@@ -105,14 +100,13 @@ window.handleGoogleLogin = async function () {
 // ================= APPLE LOGIN =================
 window.handleAppleLogin = async function () {
   const provider = new OAuthProvider("apple.com");
-
   try {
     const result = await signInWithPopup(auth, provider);
     showDownload(result.user.displayName || "User");
   } catch (err) {
     console.error(err);
     if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
-      alert("Apple login error: " + getErrorMessage(err.code));
+      showError("reg-error", getErrorMessage(err.code));
     }
   }
 };
@@ -121,21 +115,20 @@ window.handleAppleLogin = async function () {
 window.handleLogout = async function () {
   try {
     await signOut(auth);
-    // onAuthStateChanged above will handle hiding the download section
+    // onAuthStateChanged will call hideDownload() automatically
   } catch (err) {
     console.error(err);
-    alert("Logout failed. Please try again.");
   }
 };
 
 // ================= DOWNLOAD =================
 window.handleDownload = function () {
   const link = document.createElement("a");
-  link.href = "./assets/download/app.apk"; // ⚠️ Make sure this file actually exists on your server
+  link.href = "./assets/download/app.apk";
   link.download = "NotiPort.apk";
-  document.body.appendChild(link); // FIX: Some browsers require the link to be in the DOM
+  document.body.appendChild(link);
   link.click();
-  document.body.removeChild(link); // Clean up
+  document.body.removeChild(link);
 };
 
 // ================= NAV =================
@@ -155,12 +148,10 @@ window.submitContact = function () {
   const msg   = document.getElementById("c-msg")?.value.trim();
 
   if (!name || !email || !msg) {
-    alert("Fill all fields!");
+    alert("Barcha maydonlarni to'ldiring!");
     return;
   }
-
-  // TODO: Connect to a real backend, Firebase Function, or Telegram bot
-  alert("Message sent!");
+  alert("Xabar yuborildi!");
 };
 
 // ================= COUNTER =================
@@ -169,42 +160,76 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = +el.dataset.target;
     let count = 0;
     const step = Math.ceil(target / 100);
-
     const run = () => {
-      count = Math.min(count + step, target); // FIX: Clamp so it never overshoots
+      count = Math.min(count + step, target);
       el.innerText = count;
       if (count < target) setTimeout(run, 20);
     };
-
     run();
   });
 });
 
 // ================= SHOW DOWNLOAD =================
 function showDownload(name) {
+  // ✅ Hide the register/login form
+  const authSection = document.getElementById("auth-section");
+  if (authSection) authSection.style.display = "none";
+
+  // ✅ Show download section
   const box = document.getElementById("download-section");
   if (box) {
     box.classList.add("visible");
     box.scrollIntoView({ behavior: "smooth" });
   }
 
+  // ✅ Set welcome name
   const msg = document.getElementById("welcome-msg");
   if (msg) msg.innerText = "Welcome, " + name;
 }
 
-// ================= ERROR MESSAGES =================
-// FIX: New helper — turns Firebase error codes into readable messages
+// ================= HIDE DOWNLOAD (logout) =================
+function hideDownload() {
+  // Show auth form again
+  const authSection = document.getElementById("auth-section");
+  if (authSection) authSection.style.display = "";
+
+  // Hide download section
+  const box = document.getElementById("download-section");
+  if (box) box.classList.remove("visible");
+}
+
+// ================= LOADING STATE =================
+function setLoading(btnId, isLoading) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.disabled = isLoading;
+  btn.style.opacity = isLoading ? "0.6" : "1";
+}
+
+// ================= ERROR DISPLAY =================
+function showError(elementId, message) {
+  const el = document.getElementById(elementId);
+  if (el) {
+    el.innerText = message;
+    el.style.display = "block";
+    setTimeout(() => { el.style.display = "none"; }, 4000);
+  } else {
+    alert(message);
+  }
+}
+
+// ================= ERROR MESSAGES (Uzbek) =================
 function getErrorMessage(code) {
   const messages = {
-    "auth/email-already-in-use":    "Bu email allaqchon foydalanilgan.",
-    "auth/invalid-email":           "Notog'ri email manzili.",
-    "auth/weak-password":           "Parol kamida 6 ta belgidan iborat bo'lishi kerak.",
-    "auth/user-not-found":          "Ushbu email bilan hisob qayd etilmagan.",
-    "auth/wrong-password":          "Noto'g'ri parol.",
-    "auth/invalid-credential":      "Noto'g'ri email yoki parol.",
-    "auth/too-many-requests":       "Urinishlar juda ko'p. Iltimos, keyinroq harakat qiling.",
-    "auth/network-request-failed":  "Tarmoqda xatolik, iltimos ulanishni tekshiring.",
-    "auth/operation-not-allowed":   "Bu Kirish usuli mavjud emas.",
+    "auth/email-already-in-use":   "Bu email allaqachon ro'yxatdan o'tgan.",
+    "auth/invalid-email":          "Email noto'g'ri formatda.",
+    "auth/weak-password":          "Parol kamida 6 ta belgidan iborat bo'lishi kerak.",
+    "auth/user-not-found":         "Bu email bilan hisob topilmadi.",
+    "auth/wrong-password":         "Parol noto'g'ri.",
+    "auth/invalid-credential":     "Email yoki parol noto'g'ri.",
+    "auth/too-many-requests":      "Juda ko'p urinish. Keyinroq urinib ko'ring.",
+    "auth/network-request-failed": "Tarmoq xatosi. Internetni tekshiring.",
+    "auth/operation-not-allowed":  "Bu kirish usuli Firebase'da yoqilmagan.",
   };
-  return messages[code] || "Something went wrong. Please try again.";
+  return messages[code] || "Xatolik yuz berdi. Qaytadan urinib ko'ring.";
 }

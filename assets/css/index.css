@@ -274,7 +274,13 @@
   .si-fb { background: #1877f2; }
 
   /* ===== AUTH / REGISTER ===== */
+
   #register { background: var(--bg); }
+  #auth-section{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  }
   .auth-grid {
     display: flex;
     justify-content: center; align-items: center ;
