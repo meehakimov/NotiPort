@@ -138,9 +138,19 @@ window.toggleNav = function () {
 
 // ================= FAQ =================
 window.toggleFaq = function (btn) {
-  btn.parentElement.classList.toggle("open");
-};
+  const clickedItem = btn.parentElement;
+  const allItems = document.querySelectorAll(".faq-item"); // ✅ o'z class nomingizni yozing
 
+  allItems.forEach((item) => {
+    if (item === clickedItem) {
+      // Bosilgan item — ochiq/yopiq almashtir
+      item.classList.toggle("open");
+    } else {
+      // Boshqa itemlar — yopib qo'y
+      item.classList.remove("open");
+    }
+  });
+};
 // ================= CONTACT =================
 window.submitContact = function () {
   const name  = document.getElementById("c-name")?.value.trim();
@@ -181,7 +191,8 @@ function showDownload(name) {
     box.classList.add("visible");
     box.scrollIntoView({ behavior: "smooth" });
   }
-
+   const navLink = document.getElementById("nav-login-link");
+  if (navLink) navLink.style.display = "none";
   // ✅ Set welcome name
   const msg = document.getElementById("welcome-msg");
   if (msg) msg.innerText = "Welcome, " + name;
@@ -196,6 +207,8 @@ function hideDownload() {
   // Hide download section
   const box = document.getElementById("download-section");
   if (box) box.classList.remove("visible");
+  const navLink = document.getElementById("nav-login-link");
+  if (navLink) navLink.style.display = "";
 }
 
 // ================= LOADING STATE =================
