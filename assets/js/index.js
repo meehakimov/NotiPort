@@ -124,7 +124,7 @@ window.handleLogout = async function () {
 // ================= DOWNLOAD =================
 window.handleDownload = function () {
   const link = document.createElement("a");
-  link.href = "./assets/download/app.apk";
+  link.href = "./assets/download/app-release.apk";
   link.download = "NotiPort.apk";
   document.body.appendChild(link);
   link.click();
