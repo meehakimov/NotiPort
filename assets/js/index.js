@@ -124,11 +124,10 @@ window.handleLogout = async function () {
 // ================= DOWNLOAD =================
 window.handleDownload = function () {
   const link = document.createElement("a");
-  link.href = "./assets/download/app-release(1).apk";
-  link.download = "app-release.apk";
+  link.href = "./download/app-release_(1).apk";  // ✅ To'g'ri yo'l
+  link.download = "app-release.apk";             // Yuklab olinganda bu nom bilan saqlanadi
   document.body.appendChild(link);
   link.click();
-
   document.body.removeChild(link);
 };
 
