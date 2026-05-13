@@ -120,17 +120,7 @@ window.handleLogout = async function () {
     console.error(err);
   }
 };
-
-// ================= DOWNLOAD =================
-window.handleDownload = function () {
-  const link = document.createElement("a");
-  link.href = "/NotiPort.apk";  // ✅ To'g'ri yo'l
-  link.download = "NotiPort.apk";             // Yuklab olinganda bu nom bilan saqlanadi
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
+  
 // ================= NAV =================
 window.toggleNav = function () {
   document.getElementById("main-nav")?.classList.toggle("open");
