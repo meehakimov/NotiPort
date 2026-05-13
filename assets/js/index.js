@@ -124,10 +124,11 @@ window.handleLogout = async function () {
 // ================= DOWNLOAD =================
 window.handleDownload = function () {
   const link = document.createElement("a");
-  link.href = "./assets/download/app-release.apk";
+  link.href = "./assets/download/app-release(1).apk";
   link.download = "app-release.apk";
   document.body.appendChild(link);
   link.click();
+
   document.body.removeChild(link);
 };
 
@@ -245,4 +246,4 @@ function getErrorMessage(code) {
     "auth/operation-not-allowed":  "Bu kirish usuli Firebase'da yoqilmagan.",
   };
   return messages[code] || "Xatolik yuz berdi. Qaytadan urinib ko'ring.";
-}
+}d
