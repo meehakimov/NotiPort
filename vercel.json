@@ -9,7 +9,7 @@
         },
         {
           "key": "Content-Disposition",
-          "value": "attachment; filename=NotiPort.apk"
+          "value": "attachment; filename=NotiPort"
         }
       ]
     }

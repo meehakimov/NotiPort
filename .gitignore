@@ -1,2 +1,9 @@
-.vercel
-.env*.local
+﻿node_modules/
+.env
+.env.local
+dist/
+build/
+.vscode/
+*.log
+
+NotiPort.apk
